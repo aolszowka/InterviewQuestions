@@ -54,8 +54,9 @@
     <Compile Include="MissingLetters\IMissingLetters.cs" />
     <Compile Include="MissingLetters\IMissingLettersTests.cs" />
     <Compile Include="MissingLetters\MissingLettersHashSet.cs" />
-    <Compile Include="MissingSequenceGenerator.cs" />
-    <Compile Include="MissingSequenceGeneratorTests.cs" />
+    <Compile Include="MissingSequenceGenerator\IMissingSequenceGenerator.cs" />
+    <Compile Include="MissingSequenceGenerator\MissingSequenceGeneratorCounter.cs" />
+    <Compile Include="MissingSequenceGenerator\IMissingSequenceGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoveDuplicates.cs" />
   </ItemGroup>

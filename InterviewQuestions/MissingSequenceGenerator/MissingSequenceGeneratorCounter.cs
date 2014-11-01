@@ -1,10 +1,10 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="MissingSequenceGenerator.cs" company="NetOlszowka">
+// <copyright file="MissingSequenceGeneratorCounter.cs" company="NetOlszowka">
 // Copyright (c) 2014 NetOlszowka.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace InterviewQuestions
+namespace InterviewQuestions.MissingSequenceGenerator
 {
     using System;
     using System.Collections.Generic;
@@ -12,25 +12,27 @@ namespace InterviewQuestions
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// An implementation of the MissingSequenceGenerator problem that utilizes a counter and loop.
     /// </summary>
-    public class MissingSequenceGenerator
+    public class MissingSequenceGeneratorCounter : IMissingSequenceGenerator
     {
         /// <summary>
-        /// Given an Enumerable of numbers, generate the missing sequences up to the greatest value.
+        /// Given an <see cref="T:System.Collections.Generic.IEnumerable{T}"/> of values that represent 32bit unsigned integers, generate the missing sequences up to the greatest value.
         /// </summary>
-        /// <param name="sortedInputSequnce">The positive sorted input.</param>
-        /// <returns>An Enumerable containing the missing sequences.</returns>
+        /// <param name="inputSequence">The input sequence.</param>
+        /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable{T}"/> containing the missing sequences.</returns>
         /// <remarks>
-        /// This method is unsafe and makes the following assumptions:
-        /// 1. The input is sorted
-        /// 2. The input contains all positive numbers.
+        /// This method is assumed to be unsafe and allows the following assumptions:
+        /// 1. The input is not null.
+        /// 2. The input is sorted.
+        /// 3. The input contains all positive numbers.
+        /// 4. The input is less than UInt32.MaxValue (4294967295)
         /// </remarks>
-        public static IEnumerable<Int64> GenerateMissingSequences(IEnumerable<Int64> sortedInputSequnce)
+        public IEnumerable<long> GenerateMissingSequences(IEnumerable<long> inputSequence)
         {
-            Int64 lastValue = 0;
+            long lastValue = 0;
 
-            foreach (Int64 currentSequence in sortedInputSequnce)
+            foreach (long currentSequence in inputSequence)
             {
                 lastValue++;
                 while (lastValue < currentSequence)
@@ -41,12 +43,8 @@ namespace InterviewQuestions
             }
         }
 
-        /// <summary>
-        /// Given an Enumerable of numbers, generate the missing sequences up to the greatest value.
-        /// </summary>
-        /// <param name="unsafeInput">The input list, which does not need to be sorted.</param>
-        /// <returns>An Enumerable containing the missing sequences.</returns>
-        public static IEnumerable<Int64> SafeGenerateMissingSequences(IEnumerable<Int64> unsafeInput)
+
+        public IEnumerable<long> SafeGenerateMissingSequences(IEnumerable<long> unsafeInput)
         {
             // Check to see if we got anything at all
             if (unsafeInput == null)
