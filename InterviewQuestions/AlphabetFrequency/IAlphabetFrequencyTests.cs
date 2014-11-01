@@ -9,6 +9,7 @@ namespace InterviewQuestions.AlphabetFrequency
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
+    using LinqStatistics;
     using NUnit.Framework;
 
     /// <summary>
@@ -98,18 +99,28 @@ namespace InterviewQuestions.AlphabetFrequency
         {
             string testString = System.IO.File.ReadAllText(@"Resources\HuckleberryFinn.txt");
             int numberOfTestRuns = 100;
+            IList<long> runtimeResults = new List<long>();
 
             System.Diagnostics.Trace.WriteLine("AlphabetFrequency_PerformanceTest");
 
-            // First Implementation
+            // Execute the Tests
             for (int i = 0; i < numberOfTestRuns; i++)
             {
                 Stopwatch timer = Stopwatch.StartNew();
                 var result = alphabetFrequencyImplmentation.AlphabetFreqency(testString);
                 result.ToArray();
                 timer.Stop();
+                runtimeResults.Add(timer.ElapsedMilliseconds);
                 System.Diagnostics.Trace.WriteLine(string.Format("First Run {0} Took {1}ms", i, timer.ElapsedMilliseconds));
             }
+
+            // Give some stats on the data
+            Trace.WriteLine("*******************************");
+            Trace.WriteLine("************ Stats ************");
+            Trace.WriteLine("*******************************");
+            Trace.WriteLine(string.Format("Median: {0}ms", runtimeResults.Median()));
+            Trace.WriteLine(string.Format("Variance: {0}ms", runtimeResults.Variance()));
+            Trace.WriteLine(string.Format("Standard Deviation: {0}ms", runtimeResults.StandardDeviation()));
         }
 
         #endregion
