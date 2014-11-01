@@ -54,6 +54,9 @@
     <Compile Include="MissingLetters\IMissingLetters.cs" />
     <Compile Include="MissingLetters\IMissingLettersTests.cs" />
     <Compile Include="MissingLetters\MissingLettersHashSet.cs" />
+    <Compile Include="MissingLetters\MissingLettersHashSetKnockout.cs" />
+    <Compile Include="MissingLetters\MissingLettersStringContainsEqualityComparer.cs" />
+    <Compile Include="MissingLetters\MissingLettersStringContainsToUpper.cs" />
     <Compile Include="MissingSequenceGenerator\IMissingSequenceGenerator.cs" />
     <Compile Include="MissingSequenceGenerator\MissingSequenceGeneratorCounter.cs" />
     <Compile Include="MissingSequenceGenerator\IMissingSequenceGeneratorTests.cs" />

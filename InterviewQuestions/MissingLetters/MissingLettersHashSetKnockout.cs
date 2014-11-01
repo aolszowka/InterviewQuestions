@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="MissingLettersHashSet.cs" company="NetOlszowka">
+// <copyright file="MissingLettersHashSetKnockout.cs"  company="NetOlszowka">
 // Copyright (c) 2014 NetOlszowka.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -11,9 +11,9 @@ namespace InterviewQuestions.MissingLetters
     using System.Linq;
 
     /// <summary>
-    /// A MissingLetter implementation that utilizes HashSet.Except(HashSet).
+    /// A MissingLetter implementation that utilizes a "Knockout" HashSet.
     /// </summary>
-    public class MissingLettersHashSet : IMissingLetters
+    public class MissingLettersHashSetKnockout : IMissingLetters
     {
         /// <summary>
         /// Given a string return the letters of the English Alphabet (A-Z case-insensitive) that are missing.
@@ -29,11 +29,19 @@ namespace InterviewQuestions.MissingLetters
 
             // All Alphabet
             string alphabetString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            HashSet<char> alphabet = new HashSet<char>(alphabetString.ToCharArray());
+            HashSet<char> alphabetMissing = new HashSet<char>(alphabetString.ToCharArray());
 
-            HashSet<char> inputSet = new HashSet<char>(inputString.AsEnumerable().Select(charCharacter => char.ToUpper(charCharacter)));
+            var inputStringChars = inputString.AsEnumerable();
 
-            return alphabet.Except(inputSet);
+            using (var charsEnumerator = inputStringChars.GetEnumerator())
+            {
+                while (charsEnumerator.MoveNext() && alphabetMissing.Any())
+                {
+                    alphabetMissing.Remove(char.ToUpper(charsEnumerator.Current));
+                }
+            }
+
+            return alphabetMissing;
         }
     }
 }
