@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\InterviewQuestions.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\InterviewQuestions.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
@@ -41,14 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlphabetFind.cs" />
-    <Compile Include="AlphabetFindTests.cs" />
+    <Compile Include="AlphabetFrequency\AlphabetFrequencyRegexDictionary.cs" />
+    <Compile Include="AlphabetFrequency\IAlphabetFrequencyTests.cs" />
+    <Compile Include="AlphabetFrequency\AlphabetFrequencyArray.cs" />
     <Compile Include="ConvertingStringAndInts.cs" />
+    <Compile Include="AlphabetFrequency\IAlphabetFrequency.cs" />
+    <Compile Include="MissingLetters\IMissingLetters.cs" />
+    <Compile Include="MissingLetters\IMissingLettersTests.cs" />
+    <Compile Include="MissingLetters\MissingLettersHashSet.cs" />
     <Compile Include="MissingSequenceGenerator.cs" />
     <Compile Include="MissingSequenceGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoveDuplicates.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\HuckleberryFinn.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

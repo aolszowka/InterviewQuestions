@@ -1,42 +1,26 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="AlphabetFind.cs" company="NetOlszowka">
+// <copyright file="AlphabetFrequencyRegexDictionary.cs" company="NetOlszowka">
 // Copyright (c) 2014 NetOlszowka.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace InterviewQuestions
+namespace InterviewQuestions.AlphabetFrequency
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
 
     /// <summary>
-    /// Possible Solution to AlphabetFind Interview Question Series.
+    /// An implementation of the AlphabetFrequency problem that is based around a Regular Expression to sanitize input and then a Dictionary.
     /// </summary>
-    public class AlphabetFind
+    public class AlphabetFrequencyRegexDictionary : IAlphabetFrequency
     {
-        /// <summary>
-        /// Given a string return the letters of the English Alphabet that are missing in a case insensitive manner.
-        /// </summary>
-        /// <param name="searchstring">The string to parse.</param>
-        /// <returns>An Enumerable containing the missing characters.</returns>
-        public static IEnumerable<char> FindMissingLetters(string searchstring)
-        {
-            // All Alphabet
-            string alphabetString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            HashSet<char> alphabet = new HashSet<char>(alphabetString.ToCharArray());
-
-            HashSet<char> inputSet = new HashSet<char>(searchstring.ToUpper().ToCharArray());
-
-            return alphabet.Except(inputSet);
-        }
-
         /// <summary>
         /// Given a string returns the letters of the English Alphabet in a case insensitive manner along with their frequency.
         /// </summary>
         /// <param name="inputString">The string to parse.</param>
         /// <returns>An Enumerable of KeyValuePairs in which the key is the letter of the English Alphabet and the value is the frequency in an undefined order.</returns>
-        public static IEnumerable<KeyValuePair<char, int>> AlphabetFreqency(string inputString)
+        public IEnumerable<KeyValuePair<char, int>> AlphabetFreqency(string inputString)
         {
             Dictionary<char, int> result = new Dictionary<char, int>();
 
@@ -63,9 +47,9 @@ namespace InterviewQuestions
         /// </summary>
         /// <param name="inputString">The string to parse.</param>
         /// <returns>An Enumerable of KeyValuePairs in which the key is the letter of the English Alphabet and the value is the frequency ordered by Frequency.</returns>
-        public static IEnumerable<KeyValuePair<char, int>> AlphabetFrequencyOrderedByFrequency(string inputString)
+        public IEnumerable<KeyValuePair<char, int>> AlphabetFrequencyOrderedByFrequency(string inputString)
         {
-            var result = AlphabetFreqency(inputString);
+            var result = this.AlphabetFreqency(inputString);
             return result.OrderByDescending(kvp => kvp.Value);
         }
 
@@ -74,9 +58,9 @@ namespace InterviewQuestions
         /// </summary>
         /// <param name="inputString">The string to parse.</param>
         /// <returns>An Enumerable of KeyValuePairs in which the key is the letter of the English Alphabet and the value is the frequency ordered Alphabetically.</returns>
-        public static IEnumerable<KeyValuePair<char, int>> AlphabetFrequencyOrderedByAlpha(string inputString)
+        public IEnumerable<KeyValuePair<char, int>> AlphabetFrequencyOrderedByAlpha(string inputString)
         {
-            var result = AlphabetFreqency(inputString);
+            var result = this.AlphabetFreqency(inputString);
             return result.OrderBy(kvp => kvp.Key);
         }
     }
