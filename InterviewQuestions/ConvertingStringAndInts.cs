@@ -82,7 +82,7 @@ namespace ConvertingStringAndInts
 
             if (isMinValue)
             {
-                parsedString[parsedString.Length-1] = (char)((int)parsedString[parsedString.Length-1] + 1);
+                parsedString[parsedString.Length - 1] = (char)((int)parsedString[parsedString.Length - 1] + 1);
             }
 
             return new string(parsedString);

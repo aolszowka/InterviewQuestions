@@ -80,7 +80,7 @@ namespace InterviewQuestions.AlphabetFrequency
         /// <returns>Returns an <see cref="T:System.Collections.Generic.IEnumerable{T}"/> of <see cref="System.Collections.Generic.KeyValuePair{T,U}"/> of <see cref="T:System.Char"/>, <see cref="T:System.Int32"/> in which the key is the letter of the English Alphabet (in UPPERCASE) and the value is the frequency. Must be ordered alphabetically.</returns>
         public IEnumerable<KeyValuePair<char, int>> AlphabetFrequencyOrderedByAlpha(string inputString)
         {
-            var result = AlphabetFreqency(inputString);
+            var result = this.AlphabetFreqency(inputString);
             return result.OrderBy(kvp => kvp.Key);
         }
     }

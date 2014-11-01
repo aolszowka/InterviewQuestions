@@ -17,12 +17,12 @@ namespace InterviewQuestions.MissingLetters
         /// <summary>
         /// The English Alphabet, String Form.
         /// </summary>
-        const string ALL_ALPHABET_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        private const string ALL_ALPHABET_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         /// <summary>
         /// The English Alphabet, Array Form.
         /// </summary>
-        static char[] ALL_ALPHABET_ARRAY =
+        private static char[] ALL_ALPHABET_ARRAY =
             new char[]
             {
                 'A', 'B', 'C', 'D', 'E', 'F',
@@ -32,25 +32,28 @@ namespace InterviewQuestions.MissingLetters
                 'Y', 'Z'
             };
 
-        IMissingLetters missingLettersImplementation;
+        /// <summary>
+        /// The MissingLetters Implementation used in these tests.
+        /// </summary>
+        private IMissingLetters missingLettersImplementation;
 
         [TestFixtureSetUp]
         public void Setup()
         {
-            missingLettersImplementation = new MissingLettersHashSet();
+            this.missingLettersImplementation = new MissingLettersHashSet();
         }
 
         [Test]
         public void FindMissingLetters_NoMissingLetters()
         {
-            var result = missingLettersImplementation.FindMissingLetters(ALL_ALPHABET_STRING);
+            var result = this.missingLettersImplementation.FindMissingLetters(ALL_ALPHABET_STRING);
             CollectionAssert.IsEmpty(result, "No letters should be missing.");
         }
 
         [Test]
         public void FindMissingLetters_EmptyString()
         {
-            var result = missingLettersImplementation.FindMissingLetters(string.Empty);
+            var result = this.missingLettersImplementation.FindMissingLetters(string.Empty);
             CollectionAssert.AreEquivalent(ALL_ALPHABET_ARRAY, result, "All letters should be missing.");
         }
 
@@ -61,7 +64,7 @@ namespace InterviewQuestions.MissingLetters
             string testString = "ABCDEFGHIJKLNOPQRSTUVWXYZ";
             var expectedResult = new char[] { 'M' };
 
-            var result = missingLettersImplementation.FindMissingLetters(testString);
+            var result = this.missingLettersImplementation.FindMissingLetters(testString);
 
             CollectionAssert.AreEquivalent(expectedResult, result, "The Letter M should be missing.");
         }
@@ -73,10 +76,9 @@ namespace InterviewQuestions.MissingLetters
             string testString = "BDFGHIJMNPQRTUVXY";
             var expectedResult = new char[] { 'A', 'C', 'E', 'O', 'L', 'S', 'Z', 'W', 'K' };
 
-            var result = missingLettersImplementation.FindMissingLetters(testString);
+            var result = this.missingLettersImplementation.FindMissingLetters(testString);
 
             CollectionAssert.AreEquivalent(expectedResult, result, "The Letters A, C, E, O, L, S, Z, W, K Should be missing.");
         }
-
     }
 }

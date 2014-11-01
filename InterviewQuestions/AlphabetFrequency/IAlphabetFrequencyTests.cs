@@ -18,12 +18,15 @@ namespace InterviewQuestions.AlphabetFrequency
     [TestFixture]
     public class IAlphabetFrequencyTests
     {
-        IAlphabetFrequency alphabetFrequencyImplmentation;
+        /// <summary>
+        /// The AlphabetFrequency Implementation used in these tests.
+        /// </summary>
+        private IAlphabetFrequency alphabetFrequencyImplmentation;
 
         [TestFixtureSetUp]
         public void Setup()
         {
-            alphabetFrequencyImplmentation = new AlphabetFrequencyArray();
+            this.alphabetFrequencyImplmentation = new AlphabetFrequencyArray();
         }
 
         [Test]
@@ -32,7 +35,7 @@ namespace InterviewQuestions.AlphabetFrequency
             string testString = "aA";
             var expectedResult = new Dictionary<char, int> { { 'A', 2 } };
 
-            var result = alphabetFrequencyImplmentation.AlphabetFreqency(testString);
+            var result = this.alphabetFrequencyImplmentation.AlphabetFreqency(testString);
 
             CollectionAssert.AreEquivalent(expectedResult, result, "The Letter A occurs 2 times in the test string and used difference cases");
         }
@@ -43,7 +46,7 @@ namespace InterviewQuestions.AlphabetFrequency
             string testString = "AAA";
             var expectedResult = new Dictionary<char, int> { { 'A', 3 } };
 
-            var result = alphabetFrequencyImplmentation.AlphabetFreqency(testString);
+            var result = this.alphabetFrequencyImplmentation.AlphabetFreqency(testString);
 
             CollectionAssert.AreEquivalent(expectedResult, result, "The Letter A occurs 3 times in the test string");
         }
@@ -54,7 +57,7 @@ namespace InterviewQuestions.AlphabetFrequency
             string testString = "ABC abc AbC";
             var expectedResult = new Dictionary<char, int> { { 'A', 3 }, { 'B', 3 }, { 'C', 3 } };
 
-            var result = alphabetFrequencyImplmentation.AlphabetFreqency(testString);
+            var result = this.alphabetFrequencyImplmentation.AlphabetFreqency(testString);
 
             CollectionAssert.AreEquivalent(expectedResult, result, "The Letter A, B, and C occurs 3 times in the test string in various cases.");
         }
@@ -65,7 +68,7 @@ namespace InterviewQuestions.AlphabetFrequency
             string testString = "Aa BbB CcCc DddDd";
             var expectedResult = new Dictionary<char, int> { { 'A', 2 }, { 'B', 3 }, { 'C', 4 }, { 'D', 5 } };
 
-            var result = alphabetFrequencyImplmentation.AlphabetFreqency(testString);
+            var result = this.alphabetFrequencyImplmentation.AlphabetFreqency(testString);
 
             CollectionAssert.AreEquivalent(expectedResult, result, "The Letter A (2), B (3), C (4), D (5) occurs in the test string in various cases.");
         }
@@ -76,7 +79,7 @@ namespace InterviewQuestions.AlphabetFrequency
             string testString = "Aa BbB CcCc DddDd";
             var expectedResult = new Dictionary<char, int> { { 'D', 5 }, { 'C', 4 }, { 'B', 3 }, { 'A', 2 } };
 
-            var result = alphabetFrequencyImplmentation.AlphabetFrequencyOrderedByFrequency(testString);
+            var result = this.alphabetFrequencyImplmentation.AlphabetFrequencyOrderedByFrequency(testString);
 
             CollectionAssert.AreEqual(expectedResult, result.ToArray(), "The Letter D (5), C (4), B (3), A (2), occurs in the test string in various cases, Order should be by frequency (descending).");
         }
@@ -87,7 +90,7 @@ namespace InterviewQuestions.AlphabetFrequency
             string testString = "DdDdD aA cCcC bBb";
             var expectedResult = new Dictionary<char, int> { { 'A', 2 }, { 'B', 3 }, { 'C', 4 }, { 'D', 5 } };
 
-            var result = alphabetFrequencyImplmentation.AlphabetFrequencyOrderedByAlpha(testString);
+            var result = this.alphabetFrequencyImplmentation.AlphabetFrequencyOrderedByAlpha(testString);
 
             CollectionAssert.AreEqual(expectedResult, result.ToArray(), "The Letter A (2), B (3), C (4), D (5), occurs in the test string in various cases, Order should be alphabetical.");
         }
@@ -107,7 +110,7 @@ namespace InterviewQuestions.AlphabetFrequency
             for (int i = 0; i < numberOfTestRuns; i++)
             {
                 Stopwatch timer = Stopwatch.StartNew();
-                var result = alphabetFrequencyImplmentation.AlphabetFreqency(testString);
+                var result = this.alphabetFrequencyImplmentation.AlphabetFreqency(testString);
                 result.ToArray();
                 timer.Stop();
                 runtimeResults.Add(timer.ElapsedMilliseconds);
