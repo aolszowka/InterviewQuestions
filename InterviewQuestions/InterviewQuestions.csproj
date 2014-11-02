@@ -52,6 +52,7 @@
     <Compile Include="ConvertingStringAndInts.cs" />
     <Compile Include="AlphabetFrequency\IAlphabetFrequency.cs" />
     <Compile Include="MissingLetters\IMissingLetters.cs" />
+    <Compile Include="MissingLetters\IMissingLettersPerformanceDerby.cs" />
     <Compile Include="MissingLetters\IMissingLettersTests.cs" />
     <Compile Include="MissingLetters\MissingLettersHashSet.cs" />
     <Compile Include="MissingLetters\MissingLettersHashSetKnockout.cs" />
