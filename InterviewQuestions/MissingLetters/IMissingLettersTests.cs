@@ -6,6 +6,7 @@
 
 namespace InterviewQuestions.MissingLetters
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
@@ -45,6 +46,12 @@ namespace InterviewQuestions.MissingLetters
         public void Setup()
         {
             this.missingLettersImplementation = new MissingLettersHashSet();
+        }
+
+        [Test]
+        public void FindMissingLetters_NullArgument()
+        {
+            Assert.Throws<ArgumentNullException>(() => this.missingLettersImplementation.FindMissingLetters(null));
         }
 
         [Test]
@@ -113,6 +120,18 @@ namespace InterviewQuestions.MissingLetters
         {
             // A,C,E,O,L,S,Z,W,K is missing
             string testString = "BDFGHIJMNPQRTUVXY";
+            var expectedResult = new char[] { 'A', 'C', 'E', 'O', 'L', 'S', 'Z', 'W', 'K' };
+
+            var result = this.missingLettersImplementation.FindMissingLetters(testString);
+
+            CollectionAssert.AreEquivalent(expectedResult, result, "The Letters A, C, E, O, L, S, Z, W, K Should be missing.");
+        }
+
+        [Test]
+        public void FindMissingLetters_NonAlphaInput()
+        {
+            // A,C,E,O,L,S,Z,W,K is missing
+            string testString = "!BDF_GH123-IJ+=MNP*QR \r TU $ VX Y♪▲♀♂\n";
             var expectedResult = new char[] { 'A', 'C', 'E', 'O', 'L', 'S', 'Z', 'W', 'K' };
 
             var result = this.missingLettersImplementation.FindMissingLetters(testString);
