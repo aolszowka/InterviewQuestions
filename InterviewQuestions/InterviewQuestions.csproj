@@ -51,6 +51,8 @@
     <Compile Include="AlphabetFrequency\AlphabetFrequencyArray.cs" />
     <Compile Include="ConvertingStringAndInts.cs" />
     <Compile Include="AlphabetFrequency\IAlphabetFrequency.cs" />
+    <Compile Include="IEnumerableRefactor\IEnumerableRefactor.cs" />
+    <Compile Include="IEnumerableRefactor\IEnumerableRefactorTests.cs" />
     <Compile Include="MissingLetters\IMissingLetters.cs" />
     <Compile Include="MissingLetters\IMissingLettersPerformanceDerby.cs" />
     <Compile Include="MissingLetters\IMissingLettersTests.cs" />
