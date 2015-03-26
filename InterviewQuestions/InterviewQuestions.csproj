@@ -63,6 +63,10 @@
     <Compile Include="MissingSequenceGenerator\IMissingSequenceGenerator.cs" />
     <Compile Include="MissingSequenceGenerator\MissingSequenceGeneratorCounter.cs" />
     <Compile Include="MissingSequenceGenerator\IMissingSequenceGeneratorTests.cs" />
+    <Compile Include="Permutations\IPermutations.cs" />
+    <Compile Include="Permutations\IPermutationsTests.cs" />
+    <Compile Include="Permutations\Permutations.cs" />
+    <Compile Include="Permutations\PermutationsPow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoveDuplicates.cs" />
   </ItemGroup>
